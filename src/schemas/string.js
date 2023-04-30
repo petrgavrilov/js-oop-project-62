@@ -12,7 +12,7 @@ export default class StringSchema {
 
   minLength(minLength) {
     this.checker.add((value) => {
-      if (!value || typeof value !== "string") {
+      if (!value || typeof value !== 'string') {
         return true;
       }
       return value?.length >= minLength;
@@ -22,7 +22,7 @@ export default class StringSchema {
 
   contains(string) {
     this.checker.add((value) => {
-      if (!value || typeof value !== "string") {
+      if (!value || typeof value !== 'string') {
         return true;
       }
       return value.includes(string);
@@ -31,7 +31,7 @@ export default class StringSchema {
   }
 
   test(name, ...params) {
-    const customValidator = this.customValidators.get("string", name);
+    const customValidator = this.customValidators.get('string', name);
     this.checker.add((value) => customValidator(value, ...params));
     return this;
   }

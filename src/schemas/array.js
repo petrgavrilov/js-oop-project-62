@@ -22,7 +22,7 @@ export default class ArraySchema {
   }
 
   test(name, ...params) {
-    const customValidator = this.customValidators.get("array", name);
+    const customValidator = this.customValidators.get('array', name);
     this.checker.add((value) => customValidator(value, ...params));
     return this;
   }

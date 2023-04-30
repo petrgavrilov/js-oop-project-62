@@ -1,9 +1,9 @@
-import Checker from "./checker";
-import ArraySchema from "./schemas/array";
-import NumberSchema from "./schemas/number";
-import ObjectSchema from "./schemas/object";
-import StringSchema from "./schemas/string";
-import CustomValidators from "./custom";
+import Checker from './checker';
+import ArraySchema from './schemas/array';
+import NumberSchema from './schemas/number';
+import ObjectSchema from './schemas/object';
+import StringSchema from './schemas/string';
+import CustomValidators from './custom';
 
 export default class Validator {
   static schemas = {
@@ -18,19 +18,19 @@ export default class Validator {
   }
 
   string() {
-    return this.createSchema("string");
+    return this.createSchema('string');
   }
 
   number() {
-    return this.createSchema("number");
+    return this.createSchema('number');
   }
 
   array() {
-    return this.createSchema("array");
+    return this.createSchema('array');
   }
 
   object() {
-    return this.createSchema("object");
+    return this.createSchema('object');
   }
 
   createSchema(type) {

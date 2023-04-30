@@ -5,15 +5,13 @@ export default class NumberSchema {
   }
 
   required() {
-    this.checker.add((value) => {
-      return typeof value === "number";
-    });
+    this.checker.add((value) => typeof value === 'number');
     return this;
   }
 
   positive() {
     this.checker.add((value) => {
-      if (typeof value !== "number") {
+      if (typeof value !== 'number') {
         return true;
       }
       return value > 0;
@@ -23,7 +21,7 @@ export default class NumberSchema {
 
   range(from, to) {
     this.checker.add((value) => {
-      if (typeof value !== "number") {
+      if (typeof value !== 'number') {
         return true;
       }
       return value >= from && value <= to;
@@ -32,7 +30,7 @@ export default class NumberSchema {
   }
 
   test(name, ...params) {
-    const customValidator = this.customValidators.get("number", name);
+    const customValidator = this.customValidators.get('number', name);
     this.checker.add((value) => customValidator(value, ...params));
     return this;
   }

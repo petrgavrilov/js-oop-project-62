@@ -1,8 +1,8 @@
-import { describe, test, expect } from "@jest/globals";
-import Validator from "../validator";
+import { describe, test, expect } from '@jest/globals';
+import Validator from '../validator';
 
-describe("validate numbers", () => {
-  test("should validate numbers", () => {
+describe('validate numbers', () => {
+  test('should validate numbers', () => {
     const v = new Validator();
 
     const schema = v.number();

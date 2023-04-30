@@ -7,7 +7,7 @@ export default class CustomValidators {
 
   get(type, name) {
     return this.validators.find(
-      (validator) => validator.type === type && validator.name === name
+      (validator) => validator.type === type && validator.name === name,
     )?.validator;
   }
 }
