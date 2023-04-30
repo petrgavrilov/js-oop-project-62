@@ -6,7 +6,6 @@ export default class StringSchema {
 
   required() {
     this.checker.add((value) => !!value?.trim());
-
     return this;
   }
 

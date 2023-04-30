@@ -1,20 +1,20 @@
-import Checker from './checker';
-import ArraySchema from './schemas/array';
-import NumberSchema from './schemas/number';
-import ObjectSchema from './schemas/object';
-import StringSchema from './schemas/string';
-import CustomValidators from './custom';
+import Checker from './checker.js';
+import ArraySchema from './schemas/array.js';
+import NumberSchema from './schemas/number.js';
+import ObjectSchema from './schemas/object.js';
+import StringSchema from './schemas/string.js';
+import CustomValidators from './custom.js';
 
 export default class Validator {
-  static schemas = {
-    string: StringSchema,
-    number: NumberSchema,
-    array: ArraySchema,
-    object: ObjectSchema,
-  };
-
   constructor() {
     this.customValidators = new CustomValidators();
+
+    this.schemas = {
+      string: StringSchema,
+      number: NumberSchema,
+      array: ArraySchema,
+      object: ObjectSchema,
+    };
   }
 
   string() {
@@ -34,7 +34,7 @@ export default class Validator {
   }
 
   createSchema(type) {
-    return new Validator.schemas[type](new Checker(), this.customValidators);
+    return new this.schemas[type](new Checker(), this.customValidators);
   }
 
   addValidator(type, name, validator) {

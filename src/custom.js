@@ -1,13 +1,17 @@
 export default class CustomValidators {
-  validators = [];
+  constructor() {
+    this.validators = [];
+  }
 
   add(type, name, validator) {
     this.validators.push({ type, name, validator });
   }
 
   get(type, name) {
-    return this.validators.find(
+    const item = this.validators.find(
       (validator) => validator.type === type && validator.name === name,
-    )?.validator;
+    );
+
+    return item?.validator;
   }
 }

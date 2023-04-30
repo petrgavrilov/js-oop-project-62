@@ -1,5 +1,7 @@
 export default class Checker {
-  checks = [];
+  constructor() {
+    this.checks = [];
+  }
 
   add(check) {
     this.checks.push(check);

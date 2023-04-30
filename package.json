@@ -27,6 +27,7 @@
     "jest-cli": "^29.5.0"
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "all"
   }
 }
