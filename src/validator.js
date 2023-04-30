@@ -1,6 +1,7 @@
 import Checker from "./checker";
 import ArraySchema from "./schemas/array";
 import NumberSchema from "./schemas/number";
+import ObjectSchema from "./schemas/object";
 import StringSchema from "./schemas/string";
 
 export default class Validator {
@@ -14,5 +15,9 @@ export default class Validator {
 
   array() {
     return new ArraySchema(new Checker());
+  }
+
+  object() {
+    return new ObjectSchema(new Checker());
   }
 }
