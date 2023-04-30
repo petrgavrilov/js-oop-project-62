@@ -17,6 +17,10 @@ export default class ObjectSchema {
   }
 
   isValid(object) {
+    if (object === null || object === undefined) {
+      return true;
+    }
+
     if (!isObject(object)) {
       return false;
     }

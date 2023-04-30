@@ -8,7 +8,9 @@ describe('validate objects', () => {
     const schema = v.object();
 
     expect(schema.isValid({})).toBe(true);
-    expect(schema.isValid(null)).toBe(false);
+    expect(schema.isValid(null)).toBe(true);
+    expect(schema.isValid('123')).toBe(false);
+    expect(schema.isValid(123)).toBe(false);
 
     schema.shape({
       name: v.string().required(),
