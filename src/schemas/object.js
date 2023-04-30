@@ -1,8 +1,10 @@
 export default class ObjectSchema {
-  shape(shape) {
+  shape(shape = {}) {
     this.options = {
       shape,
     };
+
+    return this;
   }
 
   isValid(object) {
