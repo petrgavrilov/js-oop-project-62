@@ -1,5 +1,7 @@
-const isObject = (value) =>
-  typeof value === 'object' && value !== null && !Array.isArray(value);
+const isObject = (value) => {
+  const typeCheck = typeof value === 'object';
+  return typeCheck && value !== null && !Array.isArray(value);
+};
 
 export default class ObjectSchema {
   constructor() {
