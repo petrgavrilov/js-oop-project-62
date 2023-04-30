@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export default class NumberSchema {
   constructor(checker) {
     this.checker = checker;
