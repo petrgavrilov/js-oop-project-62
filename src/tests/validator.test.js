@@ -23,6 +23,10 @@ describe("validator", () => {
     expect(schema.isValid(null)).toBe(false);
     expect(schema.isValid("")).toBe(false);
 
+    schema.minLength(5);
+    expect(schema.isValid("bebe")).toBe(false);
+    expect(schema.isValid("bebebe")).toBe(true);
+
     schema.contains("what");
     expect(schema.isValid("what does the fox say")).toBe(true);
 
