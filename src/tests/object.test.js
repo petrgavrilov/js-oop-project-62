@@ -7,6 +7,9 @@ describe('validate objects', () => {
 
     const schema = v.object();
 
+    expect(schema.isValid({})).toBe(true);
+    expect(schema.isValid(null)).toBe(false);
+
     schema.shape({
       name: v.string().required(),
       age: v.number().positive(),
@@ -23,5 +26,15 @@ describe('validate objects', () => {
 
     const schema = v.object();
     expect(schema.shape().isValid({ lol: 'kek' })).toBe(true);
+  });
+
+  test('should validate with non-object shape', () => {
+    const v = new Validator();
+
+    const schema = v.object();
+    expect(schema.shape(undefined).isValid({ lol: 'kek' })).toBe(true);
+    expect(schema.shape(null).isValid({ lol: 'kek' })).toBe(true);
+    expect(schema.shape(123).isValid({ lol: 'kek' })).toBe(true);
+    expect(schema.shape('pepepepe').isValid({ lol: 'kek' })).toBe(true);
   });
 });
