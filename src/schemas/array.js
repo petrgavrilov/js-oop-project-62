@@ -1,6 +1,7 @@
 export default class ArraySchema {
-  constructor(checker) {
+  constructor(checker, customValidators) {
     this.checker = checker;
+    this.customValidators = customValidators;
   }
 
   required() {
@@ -17,6 +18,12 @@ export default class ArraySchema {
       return value.length === length;
     });
 
+    return this;
+  }
+
+  test(name, ...params) {
+    const customValidator = this.customValidators.get("array", name);
+    this.checker.add((value) => customValidator(value, ...params));
     return this;
   }
 

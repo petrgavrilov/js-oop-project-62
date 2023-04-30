@@ -1,6 +1,7 @@
 export default class StringSchema {
-  constructor(checker) {
+  constructor(checker, customValidators) {
     this.checker = checker;
+    this.customValidators = customValidators;
   }
 
   required() {
@@ -26,6 +27,12 @@ export default class StringSchema {
       }
       return value.includes(string);
     });
+    return this;
+  }
+
+  test(name, ...params) {
+    const customValidator = this.customValidators.get("string", name);
+    this.checker.add((value) => customValidator(value, ...params));
     return this;
   }
 

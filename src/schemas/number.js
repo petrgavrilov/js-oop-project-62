@@ -1,6 +1,7 @@
 export default class NumberSchema {
-  constructor(checker) {
+  constructor(checker, customValidators) {
     this.checker = checker;
+    this.customValidators = customValidators;
   }
 
   required() {
@@ -27,6 +28,12 @@ export default class NumberSchema {
       }
       return value >= from && value <= to;
     });
+    return this;
+  }
+
+  test(name, ...params) {
+    const customValidator = this.customValidators.get("number", name);
+    this.checker.add((value) => customValidator(value, ...params));
     return this;
   }
 
