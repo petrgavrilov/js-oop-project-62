@@ -1,13 +1,7 @@
 import { describe, test, expect } from "@jest/globals";
 import Validator from "../validator";
 
-describe("validator", () => {
-  test("should create new validator", () => {
-    const validator = new Validator();
-
-    expect(validator).toBeTruthy();
-  });
-
+describe("validate strings", () => {
   test("should validate strings", () => {
     const v = new Validator();
     const schema = v.string();

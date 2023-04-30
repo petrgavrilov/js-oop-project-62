@@ -1,30 +1,33 @@
-export default class StringSchema {
+import { type } from "os";
+
+export default class NumberSchema {
   constructor(checker) {
     this.checker = checker;
   }
 
   required() {
-    this.checker.add((value) => !!value?.trim());
-
-    return this;
-  }
-
-  minLength(minLength) {
     this.checker.add((value) => {
-      if (!value || typeof value !== "string") {
-        return true;
-      }
-      return value?.length >= minLength;
+      return typeof value === "number";
     });
     return this;
   }
 
-  contains(string) {
+  positive() {
     this.checker.add((value) => {
-      if (!value || typeof value !== "string") {
+      if (typeof value !== "number") {
         return true;
       }
-      return value.includes(string);
+      return value > 0;
+    });
+    return this;
+  }
+
+  range(from, to) {
+    this.checker.add((value) => {
+      if (typeof value !== "number") {
+        return true;
+      }
+      return value >= from && value <= to;
     });
     return this;
   }
